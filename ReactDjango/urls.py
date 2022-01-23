@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from authapp.views import index
-import authapp
+from authapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
       path('',include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
+    path('user/delete/<str:user_name>/',views.delete)
+
     # path('auth/', include(authapp.urls))
 ]
