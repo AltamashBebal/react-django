@@ -21,7 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
       path('',include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
-    path('user/delete/<str:user_name>/',views.delete)
+    path('user/delete/<str:user_name>/',views.delete),
+    path('user/getAll/',views.getUsers),
+    path('user/<str:username>/',views.getUser)
 
     # path('auth/', include(authapp.urls))
 ]
