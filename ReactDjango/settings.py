@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-nw6$oiykb7r-4l-*jarprr#fyn$6i!-m!hrm#__=2j%jc3l33s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -128,10 +129,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-import os
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILE=[STATIC_ROOT]
+STATICFILE = [STATIC_ROOT]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -156,10 +156,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-DJOSER ={
-    'SERIALIZERS':{
-        'user_create':'authapp.serializers.UserCreateSerializer',
-        'user':'authapp.serializers.UserCreateSerializer',
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'authapp.serializers.UserCreateSerializer',
+        'user': 'authapp.serializers.UserCreateSerializer',
         # 'current_user':'authentication.serializers.CurrentUserSerializer'
     }
 }
