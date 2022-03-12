@@ -7,7 +7,7 @@ from rest_framework import serializers
 roles = (
     ("admin", "Admin"),
     ("customer", "Customer"),
-    ("delivery Boy", "Delivery Boy"),
+    ("delivery Boy", "DeliveryBoy"),
 
 )
 
@@ -21,8 +21,6 @@ class User(AbstractUser):
     address = models.CharField(max_length=255)
     group = models.CharField(max_length=20)
     REQUIRED_FIELDS = ['phone', 'first_name', 'last_name', 'role']
-
-
 
 
 # class userProfileSerializer(serializers.ModelSerializer):

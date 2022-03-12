@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from authapp.views import index
 from authapp import views
+from Product import views as ProductView
 urlpatterns = [
     path('admin/', admin.site.urls),
-      path('',include('djoser.urls')),
+    path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
-    path('user/delete/<str:user_name>/',views.delete),
-    path('user/getAll/',views.getUsers),
-    path('user/<str:username>/',views.getUser)
-
+    path('user/delete/<str:user_name>/', views.delete),
+    path('user/getAll/', views.getUsers),
+    path('user/<str:username>/', views.getUser),
+    path('products/getAll/', ProductView.getProducts),
+    path('products/delete/<str:pk>', ProductView.deleteProduct),
+    path('products/addProduct/', ProductView.addProduct),
+    path('products/addProductForCustomer/', ProductView.addProductForCustomer),
+    path('products/getCustomerWise/<str:cname>', ProductView.getCustomerWise)
     # path('auth/', include(authapp.urls))
 ]
