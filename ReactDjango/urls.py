@@ -29,6 +29,11 @@ urlpatterns = [
     path('products/delete/<str:pk>', ProductView.deleteProduct),
     path('products/addProduct/', ProductView.addProduct),
     path('products/addProductForCustomer/', ProductView.addProductForCustomer),
-    path('products/getCustomerWise/<str:cname>', ProductView.getCustomerWise)
+    path('products/getCustomerWise/<str:cname>', ProductView.getCustomerWise),
+    path('products/deleteCustomerWise/<str:pc_id>',ProductView.deleteCustomerWise),
+    path('products/updateProduct/<str:pk>', ProductView.updateProduct),
+    
+
+
     # path('auth/', include(authapp.urls))
 ]

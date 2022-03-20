@@ -10,4 +10,4 @@ class ProductSerializer(ModelSerializer):
 class CustomerSerializer(ModelSerializer):
     class Meta:
         model = CustomerWiseProduct
-        fields = ['pc_id','c_name','pname','pprice']
+        fields = ['pc_id','c_name','p_id','p_price']

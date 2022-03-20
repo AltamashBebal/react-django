@@ -18,7 +18,6 @@ def getProducts(request):
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
 def addProduct(request):
-    print(request.data)
     data = request.data
     product = Product.objects.create(
         pname=data['pname']
@@ -44,8 +43,8 @@ def addProductForCustomer(request):
     print(data)
     product = CustomerWiseProduct.objects.create(
         c_name=data['c_name'],
-        pname=data['pname'],
-        pprice=data['p_price']
+        p_id=data['p_id'],
+        p_price=data['p_price']
     )
     print(product)
     serializer = CustomerSerializer(product, many=False)
@@ -60,3 +59,23 @@ def getCustomerWise(request, cname):
     serializer = CustomerSerializer(product, many=True)
     return Response(serializer.data)
    
+
+
+@api_view(['DELETE'])
+@permission_classes((permissions.AllowAny,))
+def deleteCustomerWise(request, pc_id):
+    product = CustomerWiseProduct.objects.filter(pc_id=pc_id)
+    product.delete()
+    return Response('Product was deleted!')
+
+@api_view(['PUT'])
+@permission_classes((permissions.AllowAny,))
+def updateProduct(request, pk):
+    data = request.data
+    product = Product.objects.get(p_id=pk)
+    serializer = ProductSerializer(instance=product, data=data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
